@@ -1,0 +1,63 @@
+<section class="testimonials">
+
+  <h2>{{ section.settings.title }}</h2>
+
+  <div class="testimonial-list">
+    {% for block in section.blocks %}
+
+      <div class="testimonial-item">
+        <p>"{{ block.settings.quote }}"</p>
+        <strong>- {{ block.settings.author }}</strong>
+        <p>Rating: {{ block.settings.rating }}/5</p>
+      </div>
+
+    {% endfor %}
+  </div>
+
+</section>
+
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "What our customers say"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "quote",
+          "label": "Quote"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Rating",
+          "min": 1,
+          "max": 5,
+          "default": 5
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials"
+    }
+  ]
+}
+{% endschema %}

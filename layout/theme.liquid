@@ -18,7 +18,8 @@
     {% endunless %}
 
     {% # Load and preload the critical CSS %}
-    {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}
+    {% comment %} {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }} {% endcomment %}
+    {{ 'custom.css' | asset_url | stylesheet_tag }}
 
     {% # Social, title, etc. %}
     {% render 'meta-tags' %}
@@ -28,6 +29,10 @@
 
   <body>
     {% sections 'header-group' %}
+
+    <div class="dev-banner">
+      Theme Development Mode 🚀
+    </div>
 
     {{ content_for_layout }}
 
